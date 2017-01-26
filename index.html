@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test structuration code JS</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <input type="text" data-bind="value : name, valueUpdate : 'input'" >
+    <button data-bind="click : addUser">Ajouter</button>
+    <!-- ko if : users -->
+    <div class="users" data-bind="foreach : users">
+        <user-component  params="{ name : name }"></user-component>
+    </div>
+    <!-- /ko -->
+    <script src="./node_modules/requirejs/require.js"></script>
+    <script src="./built/require-config.js"></script>
+    <script>
+        require(["built/index"]);
+    </script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+button {
+      text-transform: uppercase;
+      padding: 10px;
+      margin: 10px;
+      border: none;
+      border-radius: 3px;
+      background-color: $primary-color;
+      color: $primary-text-color;
+      transition:all .3s ease;
+
+      &:hover {
+          opacity: 0.95;
+          box-shadow: 0 1px 3px 3px rgba(127, 127, 127, 0.28);
+      }
+  }

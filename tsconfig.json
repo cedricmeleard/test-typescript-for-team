@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "outDir": "./built/",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "module": "amd",
+    "target": "es5",
+    "experimentalDecorators": true
+  },
+  "files": [
+    "./app/require-config.ts",
+    "./app/utils/decorators.ts",
+    "./app/index.ts",
+    "./app/home/home.ts"
+  ]
+}

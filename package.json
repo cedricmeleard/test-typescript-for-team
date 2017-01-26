@@ -1,0 +1,22 @@
+{
+  "name": "structurationjsv6",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "install": "sass --watch styles/:styles/"
+  },
+  "author": "Cédric Méléard <cedric.meleard@futurskill.fr>",
+  "license": "ISC",
+  "dependencies": {
+    "knockout": "^3.4.1",
+    "requirejs": "^2.3.2"
+  },
+  "devDependencies": {
+    "@types/knockout": "^3.4.39"
+  },
+   "repository": {
+    "type": "git",
+    "url": "https://github.com/cedricmeleard/test-typescript-for-team.git"
+  } 
+}
