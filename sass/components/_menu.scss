@@ -3,11 +3,13 @@
     padding: 10px;
     text-transform: uppercase;
 }
+
 .side-menu {
     transition: all .5s ease-in-out;
     display: block;
     position: fixed;
     top:0;
+    left: 0;
     width: 50%;
     height: 100vh;
     transform: translateX(-100%);
@@ -26,5 +28,4 @@
             background: rbga(127,127,127, .28);
         }
     }
-
 }

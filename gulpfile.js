@@ -32,6 +32,6 @@ gulp.task('sass:watch', () => {
 gulp.task('default', ['scripts','sass'], () => {
     console.log('code compiled');
 });
-gulp.task('with-watch', ['scripts:watch','sass:watch'], () => {
+gulp.task(':watch', ['scripts:watch','sass:watch'], () => {
     console.log('started watching');
 });

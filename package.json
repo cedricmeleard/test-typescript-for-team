@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "install": "sass --watch styles/:styles/"
   },
   "author": "Cédric Méléard <cedric.meleard@futurskill.fr>",
   "license": "ISC",
