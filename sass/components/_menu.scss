@@ -1,0 +1,30 @@
+.icon-menu {
+    cursor:pointer;
+    padding: 10px;
+    text-transform: uppercase;
+}
+.side-menu {
+    transition: all .5s ease-in-out;
+    display: block;
+    position: fixed;
+    top:0;
+    width: 50%;
+    height: 100vh;
+    transform: translateX(-100%);
+    background-color: $primary-color;
+      color:$on-primary-color;
+    &.opened {
+    transform: translateX(0%);
+    box-shadow: 0 1px 3px 3px rbga(127,127,127, .28);
+
+        &:before {
+            position: fixed;
+            top:0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rbga(127,127,127, .28);
+        }
+    }
+
+}

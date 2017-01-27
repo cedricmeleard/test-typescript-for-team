@@ -3,5 +3,4 @@
 .sass-cache/
 node_modules/
 built/
-
-v-6.structurationJS.zip
+styles/**/*.css

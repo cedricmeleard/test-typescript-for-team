@@ -1,3 +1,7 @@
+.users {
+    display: flex;
+    flex-direction: column;
+}
 .user-template {
     font-size: 3em;
     padding: 10px;

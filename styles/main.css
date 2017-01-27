@@ -1,3 +1,4 @@
+@charset "UTF-8";
 button {
   text-transform: uppercase;
   padding: 10px;
@@ -18,22 +19,73 @@ input[type="text"] {
   border: solid 1px #666666;
   border-radius: 3px; }
 
-.user-template {
-  font-size: 3em;
+.icon-menu {
+  cursor: pointer;
   padding: 10px;
-  border-radius: 3px; }
+  text-transform: uppercase; }
 
-body {
-  font-family: "Open Sans", sans-serif;
-  color: #666666;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh; }
+.side-menu {
+  transition: all .5s ease-in-out;
+  display: block;
+  position: fixed;
+  top: 0;
+  width: 50%;
+  height: 100vh;
+  transform: translateX(-100%);
+  background-color: #3F51B5;
+  color: white; }
+  .side-menu.opened {
+    transform: translateX(0%);
+    box-shadow: 0 1px 3px 3px rbga(127, 127, 127, 0.28); }
+    .side-menu.opened:before {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rbga(127, 127, 127, 0.28); }
 
 .users {
   display: flex;
   flex-direction: column; }
 
-/*# sourceMappingURL=main.css.map */
+.user-template {
+  font-size: 3em;
+  padding: 10px;
+  border-radius: 3px; }
+
+@viewport {
+  width: device-width;
+  /* largeur du viewport */
+  zoom: 1;
+  /* zoom initial à 1.0 (et clin d'oeil aux fans d'IE6/7) */ }
+
+* {
+  box-sizing: border-box; }
+
+body {
+  font-family: "Open Sans", sans-serif;
+  color: #666666;
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden; }
+
+.header {
+  background-color: #3F51B5;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  width: 100vw; }
+
+.container {
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px; }

@@ -1,0 +1,10 @@
+{
+  "name": "Test typescript Futurskill",
+  "short_name": "TS FSK",
+  "start_url": "./?utm_source=web_app_manifest",
+  "display": "standalone",
+  "related_applications": [{
+    "platform": "web"
+  }],
+  "splash_screens": []
+}
