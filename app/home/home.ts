@@ -4,68 +4,34 @@
 import * as ko from "knockout";
 import { component } from "../utils/decorators";
 
+import { RegisterUserComponents } from "./viewmodels/component-how-to";
+import { RegisterTrainingComponents } from "./viewmodels/transclude-how-to";
+
+const UserView: any = { name: 'User', template: 'user-home' };
+const TrainingView: any = { name: 'Training', template: 'training-home' };
+
+//load components
+RegisterUserComponents();
+RegisterTrainingComponents();
+
 /// <reference path="knockout/knockout.d.ts" />
 export class Home {
-    name: KnockoutObservable<string>;
-    users: KnockoutObservableArray<any>;
     opened: KnockoutObservable<boolean>;
     openClass: KnockoutComputed<string>;
-    firstUser: KnockoutComputed<any>;
+    currentView: KnockoutObservable<any>;
+    currentViewName: KnockoutComputed<string>;
 
     constructor() {
-        this.name = ko.observable('');
-        this.users = ko.observableArray();
         this.opened = ko.observable(false);
-
+        this.currentView = ko.observable(UserView);
+        
         this.openClass = ko.computed(() => this.opened() ? 'opened' : '');
-        this.firstUser =ko.computed(() => this.users()[0]);
-    }
-
-    addUser(): void {
-        if (this.name() !== "") {
-            const user: any = {
-                id: guid(),
-                url: `https://randomuser.me/api/portraits/women/${Math.floor(Math.random() * 100)}.jpg`,
-                name: this.name()
-            };
-            this.users.push(user);
-            //reset name
-            this.name('');
-        }
+        this.currentViewName = ko.computed(() => this.currentView().template);
     }
 
     openMenu(): void {
         //toggle
         this.opened(!this.opened());
-    }
-
-}
-
-///http://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript
-function guid(): string {
-    function s4() {
-        return Math.floor((1 + Math.random()) * 0x10000)
-            .toString(16)
-            .substring(1);
-    }
-    return `${s4()}${s4()}-${s4()}-${s4()}-${s4()}-${s4()}${s4()}${s4()}`;
-}
-
-@component({
-    selector: "user-component",
-    template: `<div class="user-template">
-                    <img class="user-image" data-bind="attr : { src : url }" />
-                    <div class="user-name" data-bind="text : name"></div>
-                </div>`
-    // templateUrl : './views/user.html'
-})
-class UserComponent {
-    name: KnockoutObservable<string>;
-    url: string;
-
-    constructor(private params: any) {
-        this.name = params.name;
-        this.url = params.url;
     }
 }
 
@@ -73,21 +39,35 @@ class UserComponent {
     selector: 'side-nav',
     template: `
     <div class="side-menu" data-bind="css : openedClass">
-        <div class="icon-menu" data-bind="click : closeMenu">close</div>
+        <div class="menu-header">
+            <div class="icon-menu" data-bind="click : closeMenu">close</div>
+        </div>
+        <div class="menu-items" data-bind="foreach : views">
+            <nav class="nav-item" data-bind="click : $parent.chooseMenu">
+                <div class="nav-item-title" data-bind="text : name"></div>
+            </nav>
+        </div>
     </div>`
 })
 class SideMenu {
     opened: KnockoutObservable<boolean>;
     openedClass: KnockoutComputed<string>;
+    currentView : KnockoutObservable<any>;
+    views: Array<any>;
 
     constructor(private params: any) {
         //j'ai un doute ici si params n'est pas directement injecté
         this.opened = params.opened;
+        this.currentView = params.view;
+        this.views = [UserView, TrainingView];
+
         this.openedClass = ko.computed(() => params.opened() ? 'opened' : '');
     }
-
-    closeMenu(): void {
+    //methods
+    chooseMenu = (data : any) =>  {  
+        this.currentView(data);
         this.opened(false);
-    }
+     }
+    closeMenu = () => { this.opened(false) }
 }
 

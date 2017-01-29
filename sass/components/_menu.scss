@@ -30,6 +30,31 @@
     transform: translateX(0%);
     box-shadow: 2px 0 2px rgba(0, 0, 0, .3);
     }
+
+    .menu-header {
+        height: 100px;
+        background-color: $on-primary-color;
+        color:$primary-color;
+    }
+
+    .menu-items {
+        display: flex;
+        flex-direction: column;
+
+        .nav-item {
+            width: 100%;
+            cursor: pointer;
+            transition: all .3s ease;
+            &-title {
+                padding: 10px;
+                font-size: 1.6em;
+            }
+
+            &:hover {
+                background-color: $accent-color;
+            }
+        }
+    }
 }
 
 @media (orientation: portrait) {

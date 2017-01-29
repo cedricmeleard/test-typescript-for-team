@@ -46,6 +46,22 @@ input[type="text"] {
   .side-menu.opened {
     transform: translateX(0%);
     box-shadow: 2px 0 2px rgba(0, 0, 0, 0.3); }
+  .side-menu .menu-header {
+    height: 100px;
+    background-color: white;
+    color: #3F51B5; }
+  .side-menu .menu-items {
+    display: flex;
+    flex-direction: column; }
+    .side-menu .menu-items .nav-item {
+      width: 100%;
+      cursor: pointer;
+      transition: all .3s ease; }
+      .side-menu .menu-items .nav-item-title {
+        padding: 10px;
+        font-size: 1.6em; }
+      .side-menu .menu-items .nav-item:hover {
+        background-color: #5C6BC0; }
 
 @media (orientation: portrait) {
   .side-menu {
@@ -69,6 +85,32 @@ input[type="text"] {
     padding-left: 15px;
     font-size: 3em; }
 
+.trainings .training-template {
+  margin: 20px 0;
+  display: flex;
+  border-radius: 3px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.28); }
+  .trainings .training-template .training-image {
+    width: 80px;
+    height: 80px;
+    background-color: #fafafa;
+    flex-shrink: 0; }
+  .trainings .training-template .training-datas {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-between;
+    width: 100%; }
+    .trainings .training-template .training-datas .training-title {
+      font-size: 1.6em;
+      color: #3F51B5;
+      padding-left: 10px; }
+    .trainings .training-template .training-datas .training-secondary {
+      background-color: #fafafa;
+      color: #666666;
+      padding: 10px;
+      flex-grow: 1; }
+
 @viewport {
   width: device-width;
   /* largeur du viewport */
@@ -83,12 +125,10 @@ body {
   color: #666666;
   padding: 0;
   margin: 0;
-  height: 100vh;
-  width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow: hidden; }
+  overflow-x: hidden; }
 
 section {
   margin: 20px auto;

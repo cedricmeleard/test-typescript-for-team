@@ -15,39 +15,9 @@
     <div class="icon-menu menu-center">logo</div>
     <div class="icon-menu menu-right">notifications</div>
 </header>
-<!-- ko component : { name : 'side-nav', params : { opened : opened } } --><!-- /ko -->
-<section class="container">
-    <header>Composant & Decorateur</header>
-    <article>
-        <input type="text" data-bind="value : name, valueUpdate : 'input'" placeholder="Entrer un nom">
-        <button data-bind="click : addUser">Ajouter</button>
-        <!-- ko if : users -->
-        <div class="users" data-bind="foreach : users">
-            <user-component params="{ name : $data.name, url : $data.url }"></user-component>
-        </div>
-        <!-- /ko -->
-    </article>
-</section>
-<section>
-    <header>Template & Transculde</header>
-    <article>
-        <!-- ko if : users -->
-        <div data-bind="foreach : users">
-            <div data-bind="testHandler : 'user-component'">
-                <div data-bind="text : name"></div>
-            </div>
-        </div>
-        <!-- /ko -->
-    </article>
-</section>
-<script type="text/html" id="my-template">
-    <div class="user">
-        <div class="user-template">
-            <img class="user-image" data-bind="attr : { src : model.url }" />
-            <div class="user-name" data-bind="template : { name : name, data : model }"></div>
-        </div>
-    </div>
-</script>
+<!-- ko component : { name : 'side-nav', params : { opened : opened, view : currentView } } --><!-- /ko -->
+
+<!-- ko component : { name : currentViewName } --><!-- /ko -->
 
 <script src="./node_modules/requirejs/require.js"></script>
 <script src="./built/require-config.js"></script>

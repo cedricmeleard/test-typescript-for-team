@@ -1,0 +1,38 @@
+
+.trainings {
+
+    .training-template {
+        margin:20px 0;
+        display: flex;
+        border-radius: 3px;
+        box-shadow: 0 1px 5px rgba(0,0,0,.28);
+
+        .training-image {
+            width: 80px;
+            height: 80px;
+            background-color: $light-background;
+            flex-shrink: 0;
+        }
+
+        .training-datas {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            justify-content: space-between;
+            width: 100%;
+        
+            .training-title {
+                font-size: 1.6em;
+                color:$primary-color;
+                padding-left: 10px;
+            }
+
+            .training-secondary {
+                background-color: $light-background;
+                color: $default-color;
+                padding: 10px;
+                flex-grow: 1;
+            }
+        }
+    }
+}
