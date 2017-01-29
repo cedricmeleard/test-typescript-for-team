@@ -3,7 +3,20 @@
     flex-direction: column;
 }
 .user-template {
-    font-size: 3em;
     padding: 10px;
     border-radius: 3px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    .user-image {
+      width: 60px;
+      height: 60px;
+      border-radius: 30px;
+    }
+
+    .user-name {
+      padding-left: 15px;
+      font-size: 3em;
+    }
 }

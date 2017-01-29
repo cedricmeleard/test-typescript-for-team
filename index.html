@@ -6,30 +6,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Test structuration code JS</title>
     <!-- Startup configuration -->
-    <link rel="manifest" href="manifest.webmanifest">   
+    <link rel="manifest" href="manifest.webmanifest">
     <link rel="stylesheet" href="styles/main.css">
 </head>
-<body>
-    <header class="header">
-        <div class="icon-menu menu-left" data-bind="click : openMenu">menu</div>
-        <div class="icon-menu menu-center">logo</div>
-        <div class="icon-menu menu-right">notifications</div>
-    </header>
-    <!-- ko component : { name : 'side-nav', params : { opened : opened } } --><!-- /ko -->
-    <div class="container">
-        <input type="text" data-bind="value : name, valueUpdate : 'input'">
+<body id="app">
+<header class="header">
+    <div class="icon-menu menu-left" data-bind="click : openMenu, css : openClass">menu</div>
+    <div class="icon-menu menu-center">logo</div>
+    <div class="icon-menu menu-right">notifications</div>
+</header>
+<!-- ko component : { name : 'side-nav', params : { opened : opened } } --><!-- /ko -->
+<section class="container">
+    <header>Composant & Decorateur</header>
+    <article>
+        <input type="text" data-bind="value : name, valueUpdate : 'input'" placeholder="Entrer un nom">
         <button data-bind="click : addUser">Ajouter</button>
         <!-- ko if : users -->
         <div class="users" data-bind="foreach : users">
-            <user-component params="{ name : name }"></user-component>
+            <user-component params="{ name : $data.name, url : $data.url }"></user-component>
         </div>
         <!-- /ko -->
+    </article>
+</section>
+<section>
+    <header>Template & Transculde</header>
+    <article>
+        <!-- ko if : users -->
+        <div data-bind="foreach : users">
+            <div data-bind="testHandler : 'user-component'">
+                <div data-bind="text : name"></div>
+            </div>
+        </div>
+        <!-- /ko -->
+    </article>
+</section>
+<script type="text/html" id="my-template">
+    <div class="user">
+        <div class="user-template">
+            <img class="user-image" data-bind="attr : { src : model.url }" />
+            <div class="user-name" data-bind="template : { name : name, data : model }"></div>
+        </div>
     </div>
-    <script src="./node_modules/requirejs/require.js"></script>
-    <script src="./built/require-config.js"></script>
-    <script>
-        require(["built/index"]);
-    </script>
+</script>
+
+<script src="./node_modules/requirejs/require.js"></script>
+<script src="./built/require-config.js"></script>
+<script>
+    require(["built/index"]);
+</script>
 </body>
 
 </html>

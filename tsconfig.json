@@ -10,6 +10,9 @@
   "files": [
     "./app/require-config.ts",
     "./app/utils/decorators.ts",
+    "./app/utils/declare-helper.ts",
+    "./app/components/side-nav.ts",
+    "./app/components/user-component.ts",
     "./app/index.ts",
     "./app/home/home.ts"
   ]

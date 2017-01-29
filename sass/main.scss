@@ -1,43 +1,49 @@
-  @import "partials/vars";
-  @import "controls/button";
-  @import "controls/input-field";
-  @import "components/menu";
-  @import "components/user-component";
+@import "partials/vars";
+@import "controls/button";
+@import "controls/input-field";
+@import "components/menu";
+@import "components/user-component";
 
 @viewport {
-   width: device-width; /* largeur du viewport */
-   zoom: 1; /* zoom initial à 1.0 (et clin d'oeil aux fans d'IE6/7) */
+  width: device-width; /* largeur du viewport */
+  zoom: 1; /* zoom initial à 1.0 (et clin d'oeil aux fans d'IE6/7) */
 }
+
 * {
   box-sizing: border-box;
 }
 
 body {
-      font-family: $font-stack;
-      color:$default-color;
-      padding: 0;
-      margin: 0;
-      height: 100vh;
-      width: 100vw;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      overflow: hidden;
+  font-family: $font-stack;
+  color: $default-color;
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
 }
 
-  .header {
-      background-color: $primary-color;
-      color:$on-primary-color;
-      display: flex;
-      justify-content: space-between;
-      width: 100vw;
-  }
-  
-  .container {
-      max-width: 800px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      border-radius: 3px;
-  }
+section {
+  margin: 20px auto;
+  border-bottom: solid 1px #cfcfcf;
+}
+
+.header {
+  background-color: $primary-color;
+  color: $on-primary-color;
+  display: flex;
+  justify-content: space-between;
+  width: 100vw;
+}
+
+.container {
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+}

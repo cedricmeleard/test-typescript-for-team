@@ -3,13 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-  },
+  "scripts": {},
   "author": "Cédric Méléard <cedric.meleard@futurskill.fr>",
   "license": "ISC",
   "dependencies": {
     "knockout": "^3.4.1",
-    "requirejs": "^2.3.2"
+    "requirejs": "^2.3.2",
+    "requirejs-text": "^2.0.15",
+    "text": "github:requirejs/text"
   },
   "devDependencies": {
     "@types/knockout": "^3.4.39",

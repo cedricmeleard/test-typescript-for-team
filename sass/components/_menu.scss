@@ -2,10 +2,20 @@
     cursor:pointer;
     padding: 10px;
     text-transform: uppercase;
+
+    &.opened:before {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba(0,0,0, .15);
+        content: ' ';
+    }
 }
 
 .side-menu {
-    transition: all .5s ease-in-out;
+    transition: all .3s ease-in-out;
     display: block;
     position: fixed;
     top:0;
@@ -15,17 +25,15 @@
     transform: translateX(-100%);
     background-color: $primary-color;
       color:$on-primary-color;
+
     &.opened {
     transform: translateX(0%);
-    box-shadow: 0 1px 3px 3px rbga(127,127,127, .28);
+    box-shadow: 2px 0 2px rgba(0, 0, 0, .3);
+    }
+}
 
-        &:before {
-            position: fixed;
-            top:0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rbga(127,127,127, .28);
-        }
+@media (orientation: portrait) {
+    .side-menu {
+        width: 80%;
     }
 }
