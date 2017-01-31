@@ -4,8 +4,9 @@
     "sourceMap": true,
     "noImplicitAny": true,
     "module": "amd",
-    "target": "es5",
-    "experimentalDecorators": true
+    "target": "es3",
+    "experimentalDecorators": true,
+    "removeComments": true
   },
   "files": [
     "./app/require-config.ts",

@@ -5,20 +5,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Test structuration code JS</title>
+    <!--[if lt IE 9]>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <![endif]-->
     <!-- Startup configuration -->
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="stylesheet" href="styles/main.css">
+    <!--[if lte IE 8]>
+        <link rel="stylesheet" href="styles/main_for_ie.css">
+    <![endif]-->
 </head>
 <body id="app">
-<header class="header">
+<div class="header">
     <button class="icon-menu menu-left" data-bind="click : openMenu, css : openClass">menu</button>
     <div class="icon-menu menu-center">logo</div>
     <div class="icon-menu menu-right">notifications</div>
-</header>
-<!-- ko component : { name : 'side-nav', params : { opened : opened, view : currentView } } --><!-- /ko -->
+</div>
 
+<!-- ko component : { name : 'side-nav', params : { opened : opened, view : currentView } } --><!-- /ko -->
 <!-- ko component : { name : currentViewName } --><!-- /ko -->
 
+<script type="text/html" id="my-template">
+    <div class="training">
+        <div class="training-template">
+            <img class="training-image" data-bind="attr : { src : model.url }" />
+            <div class="training-datas">
+                <div class="training-title" data-bind="text : model.name"></div>
+                <div class="training-secondary">
+                    <div data-bind="template : { name : name, data : model }"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
 <script src="./node_modules/requirejs/require.js"></script>
 <script src="./built/require-config.js"></script>
 <script>

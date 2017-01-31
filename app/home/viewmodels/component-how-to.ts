@@ -13,7 +13,7 @@ export function RegisterUserComponents(): void {
                     <button data-bind="click : addUser">Ajouter</button>
                     <!-- ko if : users -->
                     <div class="users" data-bind="foreach : users">
-                        <user-component params="{ name : $data.name, url : $data.url }"></user-component>
+                        <!-- ko component : { name : 'user-component', params : { name : $data.name, url : $data.url } } --><!-- /ko -->
                     </div>
                     <!-- /ko -->
                 </article>

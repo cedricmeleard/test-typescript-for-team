@@ -9,14 +9,23 @@ export function declareTransclude({ handler, template}: { handler: string, templ
             },
             update: (element, valueAcessor, allBindingAccessor, model) => {
                 const uniqueId = ko.utils.unwrapObservable(valueAcessor());
-                var script = document.querySelector(`#${uniqueId}`);
+
+                const script = document.querySelector(`#${uniqueId}`);
+                let content;
                 if (!script) {
-                    const content = document.createElement("script");
-                    content.type = "text/html";
-                    content.id = uniqueId;
-                    content.innerHTML = element.innerHTML;
-                    document.querySelector("body").appendChild(content);
+                    try {
+                        content = document.createElement("script");
+                        content.type = "text/html";
+                        content.id = uniqueId;
+                        content.innerHTML = element.innerHTML;
+                    }
+                    catch (error) {
+                        //in order to works on IE8 only - such a bad thing :'(
+                        content = document.createElement(`<script type="text/html" id="${uniqueId}">${element.innerHTML}</script>`);
+                    }
+                    document.querySelector("#app").appendChild(content);
                 }
+
                 ko.renderTemplate(template, {
                     name: uniqueId,
                     model: model

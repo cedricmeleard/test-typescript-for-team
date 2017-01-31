@@ -13,7 +13,8 @@ gulp.task('scripts', function() {
         .pipe(sourcemaps.init())
         .pipe(tsProject());
  
-    return tsResult.js.pipe(uglify()).
+    return tsResult.js.
+        //pipe(uglify()).
         pipe(sourcemaps.write()).
         pipe(gulp.dest('built'));
 });

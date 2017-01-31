@@ -23,7 +23,7 @@ export class Home {
 
     constructor() {
         this.opened = ko.observable(false);
-        this.currentView = ko.observable(UserView);
+        this.currentView = ko.observable(TrainingView);
         
         this.openClass = ko.computed(() => this.opened() ? 'opened' : '');
         this.currentViewName = ko.computed(() => this.currentView().template);
@@ -42,13 +42,11 @@ export class Home {
         <div class="menu-header">
             <button class="icon-menu" data-bind="click : closeMenu">close</button>
         </div>
-        <nav>
-            <ul role="menu" class="menu-items" data-bind="foreach : views">
-                <li role="menuitem" class="nav-item" data-bind="click : $parent.chooseMenu">
-                    <span class="nav-item-title" data-bind="text : name"></span>
-                </li>    
-            </ul>
-        </nav>
+        <ul role="menu" class="menu-items" data-bind="foreach : views">
+            <li role="menuitem" class="nav-item" data-bind="click : $parent.chooseMenu">
+                <span class="nav-item-title" data-bind="text : name"></span>
+            </li>    
+        </ul>
     </div>`
 })
 class SideMenu {
