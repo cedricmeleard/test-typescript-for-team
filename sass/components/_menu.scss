@@ -1,3 +1,5 @@
+@import "../partials/vars";
+
 .icon-menu {
     cursor:pointer;
     padding: 10px;
@@ -24,11 +26,16 @@
     height: 100vh;
     transform: translateX(-100%);
     background-color: $primary-color;
-      color:$on-primary-color;
+  color: $on-primary-color;
+
+  ul, li {
+    list-style: none;
+    padding-left: 0;
+  }
 
     &.opened {
     transform: translateX(0%);
-    box-shadow: 2px 0 2px rgba(0, 0, 0, .3);
+      box-shadow: 2px 0 3px rgba(0, 0, 0, .3);
     }
 
     .menu-header {
@@ -45,6 +52,8 @@
             width: 100%;
             cursor: pointer;
             transition: all .3s ease;
+          padding: 10px 0;
+
             &-title {
                 padding: 10px;
                 font-size: 1.6em;
@@ -61,4 +70,17 @@
     .side-menu {
         width: 80%;
     }
+}
+
+@media screen and (min-width: 1400px) {
+
+  .side-menu {
+    width: 300px;
+    transform: none;
+    box-shadow: 2px 0 3px rgba(0, 0, 0, .3);
+
+    .icon-menu {
+      display: none;
+    }
+  }
 }

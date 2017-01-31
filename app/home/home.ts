@@ -40,13 +40,15 @@ export class Home {
     template: `
     <div class="side-menu" data-bind="css : openedClass">
         <div class="menu-header">
-            <div class="icon-menu" data-bind="click : closeMenu">close</div>
+            <button class="icon-menu" data-bind="click : closeMenu">close</button>
         </div>
-        <div class="menu-items" data-bind="foreach : views">
-            <nav class="nav-item" data-bind="click : $parent.chooseMenu">
-                <div class="nav-item-title" data-bind="text : name"></div>
-            </nav>
-        </div>
+        <nav>
+            <ul role="menu" class="menu-items" data-bind="foreach : views">
+                <li role="menuitem" class="nav-item" data-bind="click : $parent.chooseMenu">
+                    <span class="nav-item-title" data-bind="text : name"></span>
+                </li>    
+            </ul>
+        </nav>
     </div>`
 })
 class SideMenu {

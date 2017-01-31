@@ -43,9 +43,15 @@ input[type="text"] {
   transform: translateX(-100%);
   background-color: #3F51B5;
   color: white; }
+
+.side-menu ul, .side-menu li {
+    list-style: none;
+    padding-left: 0;
+}
   .side-menu.opened {
     transform: translateX(0%);
-    box-shadow: 2px 0 2px rgba(0, 0, 0, 0.3); }
+      box-shadow: 2px 0 3px rgba(0, 0, 0, 0.3);
+  }
   .side-menu .menu-header {
     height: 100px;
     background-color: white;
@@ -56,7 +62,9 @@ input[type="text"] {
     .side-menu .menu-items .nav-item {
       width: 100%;
       cursor: pointer;
-      transition: all .3s ease; }
+        transition: all .3s ease;
+        padding: 10px 0;
+    }
       .side-menu .menu-items .nav-item-title {
         padding: 10px;
         font-size: 1.6em; }
@@ -66,6 +74,18 @@ input[type="text"] {
 @media (orientation: portrait) {
   .side-menu {
     width: 80%; } }
+
+@media screen and (min-width: 1400px) {
+    .side-menu {
+        width: 300px;
+        transform: none;
+        box-shadow: 2px 0 3px rgba(0, 0, 0, 0.3);
+    }
+
+    .side-menu .icon-menu {
+        display: none;
+    }
+}
 
 .users {
   display: flex;
@@ -148,3 +168,9 @@ section {
   align-items: center;
   justify-content: center;
   border-radius: 3px; }
+
+@media screen and (min-width: 1400px) {
+    .header .icon-menu.menu-left {
+        display: none;
+    }
+}
