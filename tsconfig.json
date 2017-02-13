@@ -15,6 +15,7 @@
     "./app/components/side-nav.ts",
     "./app/components/user-component.ts",
     "./app/home/viewmodels/component-how-to.ts",
+    "./app/home/viewmodels/component-how-to-dynamic.ts",
     "./app/home/viewmodels/transclude-how-to.ts",
     "./app/home/home.ts",
     "./app/index.ts"

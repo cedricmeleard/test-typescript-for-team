@@ -25,19 +25,7 @@
 <!-- ko component : { name : 'side-nav', params : { opened : opened, view : currentView } } --><!-- /ko -->
 <!-- ko component : { name : currentViewName } --><!-- /ko -->
 
-<script type="text/html" id="my-template">
-    <div class="training">
-        <div class="training-template">
-            <img class="training-image" data-bind="attr : { src : model.url }" />
-            <div class="training-datas">
-                <div class="training-title" data-bind="text : model.name"></div>
-                <div class="training-secondary">
-                    <div data-bind="template : { name : name, data : model }"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</script>
+           
 <script src="./node_modules/requirejs/require.js"></script>
 <script src="./built/require-config.js"></script>
 <script>

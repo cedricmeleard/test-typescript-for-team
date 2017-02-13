@@ -97,11 +97,18 @@ input[type="text"] {
     padding-left: 15px;
     font-size: 3em; }
 
+.trainings .training.loading {
+  width: 100%;
+  animation: shine 1s ease-in infinite; }
+  .trainings .training.loading .training-template {
+    animation: none; }
+
 .trainings .training-template {
   margin: 20px 0;
   display: flex;
   border-radius: 3px;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.28); }
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.28);
+  animation: onload 0.8s ease-in-out; }
   .trainings .training-template .training-image {
     width: 80px;
     height: 80px;
@@ -122,6 +129,36 @@ input[type="text"] {
       color: #666666;
       padding: 10px;
       flex-grow: 1; }
+  .trainings .training-template .no-image {
+    background-color: #fafafa; }
+  .trainings .training-template .no-text {
+    min-width: 100%;
+    height: 34px;
+    padding: 10px; }
+    .trainings .training-template .no-text span {
+      background-color: #5C6BC0;
+      height: 26px;
+      display: block; }
+  .trainings .training-template .no-description {
+    background-color: #aaaaaa;
+    min-width: 100%;
+    height: 26px; }
+
+@keyframes onload {
+  from {
+    transform: translateX(5%);
+    opacity: 0; }
+  to {
+    opacity: 1;
+    transform: translateX(0); } }
+
+@keyframes shine {
+  0% {
+    opacity: 0.5; }
+  50% {
+    opacity: 0.7; }
+  100% {
+    opacity: 0.5; } }
 
 @viewport {
   width: device-width;
@@ -140,11 +177,15 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow-x: hidden; }
+  overflow-x: hidden;
+  overflow-y: scroll; }
 
 section {
   margin: 20px auto;
   border-bottom: solid 1px #cfcfcf; }
+
+article {
+  width: 100%; }
 
 .header {
   background-color: #3F51B5;
@@ -154,7 +195,7 @@ section {
   width: 100vw; }
 
 .container {
-  max-width: 800px;
+  width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -163,4 +204,6 @@ section {
 
 @media screen and (min-width: 1400px) {
   .header .icon-menu.menu-left {
-    display: none; } }
+    display: none; }
+  .container {
+    padding-left: 300px; } }

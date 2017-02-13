@@ -23,13 +23,16 @@ body {
   flex-direction: column;
   align-items: center;
   overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 section {
   margin: 20px auto;
   border-bottom: solid 1px #cfcfcf;
 }
-
+article {
+  width: 100%;
+}
 .header {
   background-color: $primary-color;
   color: $on-primary-color;
@@ -40,7 +43,7 @@ section {
 }
 
 .container {
-  max-width: 800px;
+  width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -53,4 +56,8 @@ section {
   .header .icon-menu.menu-left {
     display: none;
   }
+  .container {
+    padding-left: 300px;
+  }
+
 }

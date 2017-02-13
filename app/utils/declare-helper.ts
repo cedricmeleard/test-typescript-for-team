@@ -1,4 +1,5 @@
 import * as ko from "knockout";
+import * as jquery from "jquery";
 
 export function declareTransclude({ handler, template}: { handler: string, template: string }) {
 
@@ -9,9 +10,9 @@ export function declareTransclude({ handler, template}: { handler: string, templ
             },
             update: (element, valueAcessor, allBindingAccessor, model) => {
                 const uniqueId = ko.utils.unwrapObservable(valueAcessor());
-
+                
                 const script = document.querySelector(`#${uniqueId}`);
-                let content;
+                let content : any;
                 if (!script) {
                     try {
                         content = document.createElement("script");
@@ -25,7 +26,6 @@ export function declareTransclude({ handler, template}: { handler: string, templ
                     }
                     document.querySelector("#app").appendChild(content);
                 }
-
                 ko.renderTemplate(template, {
                     name: uniqueId,
                     model: model

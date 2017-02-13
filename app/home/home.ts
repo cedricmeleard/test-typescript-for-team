@@ -4,15 +4,18 @@
 import * as ko from "knockout";
 import { component } from "../utils/decorators";
 
-import { RegisterUserComponents } from "./viewmodels/component-how-to";
-import { RegisterTrainingComponents } from "./viewmodels/transclude-how-to";
+import { RegisterTrainingComponents } from "./viewmodels/component-how-to";
+import { RegisterTrainingComponentsDyn } from "./viewmodels/component-how-to-dynamic";
+import { RegisterTrainingTemplate } from "./viewmodels/transclude-how-to";
 
-const UserView: any = { name: 'User', template: 'user-home' };
-const TrainingView: any = { name: 'Training', template: 'training-home' };
+const TrainingComponentView: any = { name: 'Training - Component', template: 'training-component-home' };
+const TrainingComponentDynView: any = { name: 'Training Dyn - Component', template: 'training-component-home-dyn' };
+const TrainingTemplateView: any = { name: 'Training - Template', template: 'training-template-home' };
 
 //load components
-RegisterUserComponents();
+RegisterTrainingTemplate();
 RegisterTrainingComponents();
+RegisterTrainingComponentsDyn();
 
 /// <reference path="knockout/knockout.d.ts" />
 export class Home {
@@ -23,7 +26,7 @@ export class Home {
 
     constructor() {
         this.opened = ko.observable(false);
-        this.currentView = ko.observable(TrainingView);
+        this.currentView = ko.observable(TrainingComponentDynView);
         
         this.openClass = ko.computed(() => this.opened() ? 'opened' : '');
         this.currentViewName = ko.computed(() => this.currentView().template);
@@ -59,7 +62,7 @@ class SideMenu {
         //j'ai un doute ici si params n'est pas directement injecté
         this.opened = params.opened;
         this.currentView = params.view;
-        this.views = [UserView, TrainingView];
+        this.views = [TrainingComponentView,TrainingComponentDynView, TrainingTemplateView];
 
         this.openedClass = ko.computed(() => params.opened() ? 'opened' : '');
     }

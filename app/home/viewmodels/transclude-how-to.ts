@@ -2,12 +2,12 @@ import * as ko from "knockout";
 import { component } from "../../utils/decorators";
 import { declareTransclude } from "../../utils/declare-helper";
 
-export function RegisterTrainingComponents(): void {
+export function RegisterTrainingTemplate(): void {
 
     declareTransclude({ handler : 'testHandler', template : 'my-template' });
 
     @component({
-        selector: "training-home",
+        selector: "training-template-home",
         template: `
             <section class="container">
                 <header>Template & Transculde</header>
@@ -34,12 +34,26 @@ export function RegisterTrainingComponents(): void {
                     </div>
                     <!-- /ko -->
                 </article>
-            </section>`
+            </section>            
+<script type="text/html" id="my-template">
+    <div class="training">
+        <div class="training-template">
+            <img class="training-image" data-bind="attr : { src : model.url }" />
+            <div class="training-datas">
+                <div class="training-title" data-bind="text : model.name"></div>
+                <div class="training-secondary">
+                    <div data-bind="template : { name : name, data : model }"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script> 
+ `
     })
     class TrainingHome {
         name: KnockoutObservable<string>;
         trainings: KnockoutObservableArray<any>;
-
+        
         constructor() {
             this.name = ko.observable('');
             this.trainings = ko.observableArray([
@@ -68,6 +82,10 @@ export function RegisterTrainingComponents(): void {
                     actions : [ 'launch']
                 }
             ]);
+        }
+
+        toString() : string {
+            return this.name();
         }
     }
 }
