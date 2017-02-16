@@ -2,6 +2,8 @@ import * as ko from "knockout";
 import { component } from "../../utils/decorators";
 import { randomImage } from "../../utils/random-image-helper";
 
+/// <reference path="knockout/knockout.d.ts" />
+
 export function RegisterTrainingComponents(): void {
 
     @component({

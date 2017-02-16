@@ -3,6 +3,8 @@ import { component } from "../../utils/decorators";
 import { declareTransclude } from "../../utils/declare-helper";
 import { randomImage } from "../../utils/random-image-helper";
 
+/// <reference path="knockout/knockout.d.ts" />
+
 export function RegisterTrainingTemplate(): void {
 
     declareTransclude({ handler : 'testHandler', template : 'my-template' });
