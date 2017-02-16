@@ -24,7 +24,7 @@ export function declareTransclude({ handler, template}: { handler: string, templ
                         //in order to works on IE8 only - such a bad thing :'(
                         content = document.createElement(`<script type="text/html" id="${uniqueId}">${element.innerHTML}</script>`);
                     }
-                    document.querySelector("#app").appendChild(content);
+                    document.querySelector("body").appendChild(content);
                 }
                 ko.renderTemplate(template, {
                     name: uniqueId,

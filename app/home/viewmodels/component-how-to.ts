@@ -1,5 +1,6 @@
 import * as ko from "knockout";
 import { component } from "../../utils/decorators";
+import { randomImage } from "../../utils/random-image-helper";
 
 export function RegisterTrainingComponents(): void {
 
@@ -21,9 +22,11 @@ export function RegisterTrainingComponents(): void {
     class UserHome {
         name: KnockoutObservable<string>;
         trainings: KnockoutObservableArray<Training>;
+        images: Number[];
 
         constructor() {
             this.name = ko.observable('');
+            this.images = [];
             this.trainings = ko.observableArray([
                 new Training("", "", "", null),
                 new Training("", "", "", null),
@@ -34,19 +37,19 @@ export function RegisterTrainingComponents(): void {
             setTimeout(() => {
                 this.trainings([
                     new Training("Knockout de A à Z", "From zero to hero, avec knockout",
-                        `https://randomuser.me/api/portraits/women/${Math.floor(Math.random() * 100)}.jpg`,
+                        `https://randomuser.me/api/portraits/women/${randomImage(this.images)}.jpg`,
                         ['subscribe']),
                     new Training("Embarquez avec TypeScript", "Découvrez TypeScript, et comment il peut vous sauvez la vie",
-                        `https://randomuser.me/api/portraits/women/${Math.floor(Math.random() * 100)}.jpg`,
+                        `https://randomuser.me/api/portraits/women/${randomImage(this.images)}.jpg`,
                         ['subscribe']),
                     new Training("Quel avenir pour Webforms ?", "Web quoi?",
-                        `https://randomuser.me/api/portraits/women/${Math.floor(Math.random() * 100)}.jpg`,
+                        `https://randomuser.me/api/portraits/women/${randomImage(this.images)}.jpg`,
                         ['launch', 'like']),
                     new Training("Become progressive", "C'est la fin des haricots",
-                        `https://randomuser.me/api/portraits/women/${Math.floor(Math.random() * 100)}.jpg`,
+                        `https://randomuser.me/api/portraits/women/${randomImage(this.images)}.jpg`,
                         ['launch']),
                     new Training("Vue Js", "Framework Js orienté composant",
-                        `https://randomuser.me/api/portraits/women/${Math.floor(Math.random() * 100)}.jpg`,
+                        `https://randomuser.me/api/portraits/women/${randomImage(this.images)}.jpg`,
                         ['launch'])
                 ]);
             }, 1500);

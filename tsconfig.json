@@ -12,6 +12,8 @@
     "./app/require-config.ts",
     "./app/utils/decorators.ts",
     "./app/utils/declare-helper.ts",
+    "./app/utils/random-image-helper.ts",
+    "./app/home/service/training.service.ts",
     "./app/components/side-nav.ts",
     "./app/components/user-component.ts",
     "./app/home/viewmodels/component-how-to.ts",

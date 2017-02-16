@@ -42,6 +42,7 @@
         }
         .no-image {
             background-color: $light-background;
+            border-radius: 15px;
         }
         .no-text {
             min-width: 100%;
@@ -51,12 +52,14 @@
                 background-color: $accent-color;
                 height: 26px;
                 display: block;
+                border-radius: 15px;
             }
         }
         .no-description {
             background-color: $no-text;
             min-width: 100%;
             height: 26px;
+            border-radius: 15px;
         }
     }
 }

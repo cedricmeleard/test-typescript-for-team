@@ -1,6 +1,7 @@
 import * as ko from "knockout";
 import { component } from "../../utils/decorators";
 import { Training } from "./component-how-to";
+import { randomImage } from "../../utils/random-image-helper";
 
 export function RegisterTrainingComponentsDyn(): void {
 
@@ -39,44 +40,32 @@ export function RegisterTrainingComponentsDyn(): void {
 
             let mytrainings = [
                     new Training("Knockout de A à Z", "From zero to hero, avec knockout",
-                        `https://randomuser.me/api/portraits/women/${this.randDomImage()}.jpg`,
+                        `https://randomuser.me/api/portraits/women/${randomImage(this.images)}.jpg`,
                         ['subscribe']),
                     new Training("Embarquez avec TypeScript", "Découvrez TypeScript, et comment il peut vous sauvez la vie",
-                        `https://randomuser.me/api/portraits/women/${this.randDomImage()}.jpg`,
+                        `https://randomuser.me/api/portraits/women/${randomImage(this.images)}.jpg`,
                         ['subscribe']),
                     new Training("Quel avenir pour Webforms ?", "Web quoi?",
-                        `https://randomuser.me/api/portraits/women/${this.randDomImage()}.jpg`,
+                        `https://randomuser.me/api/portraits/women/${randomImage(this.images)}.jpg`,
                         ['launch', 'like']),
                     new Training("Become progressive", "C'est la fin des haricots",
-                        `https://randomuser.me/api/portraits/women/${this.randDomImage()}.jpg`,
+                        `https://randomuser.me/api/portraits/women/${randomImage(this.images)}.jpg`,
                         ['launch']),
                     new Training("Vue Js", "Framework Js orienté composant",
-                        `https://randomuser.me/api/portraits/women/${this.randDomImage()}.jpg`,
+                        `https://randomuser.me/api/portraits/women/${randomImage(this.images)}.jpg`,
                         ['launch']),
                     new Training("Angular", "La réinvention de AngularJS",
-                        `https://randomuser.me/api/portraits/women/${this.randDomImage()}.jpg`,
+                        `https://randomuser.me/api/portraits/women/${randomImage(this.images)}.jpg`,
                         ['launch']),
                     new Training("ICallBackEventHandler", "Une fonctionalité de .net qui est de la m...",
-                        `https://randomuser.me/api/portraits/women/${this.randDomImage()}.jpg`,
+                        `https://randomuser.me/api/portraits/women/${randomImage(this.images)}.jpg`,
                         ['launch']),
                     new Training("Knockout i snot dead", "Knockout avec Aurelia",
-                        `https://randomuser.me/api/portraits/women/${this.randDomImage()}.jpg`,
+                        `https://randomuser.me/api/portraits/women/${randomImage(this.images)}.jpg`,
                         ['launch'])
                 ];
 
                 this.loadDynamic(mytrainings);
-        }
-
-        randDomImage() : string {
-            const unwanted = [1, 5, 9, 13, 14, 16, 30, 36, 37, 41, 42, 52, 69, 75, 80, 81, 89, 92, 98];
-
-            let random = Math.floor(Math.random() * 100);
-            while ( unwanted.indexOf(random) !== -1 || this.images.indexOf(random) !== -1) {
-                random = Math.floor(Math.random() * 100);
-            }
-            
-            this.images.push(random);
-            return random.toString();
         }
 
         loadDynamic(mytrainings : Training[]): void {
