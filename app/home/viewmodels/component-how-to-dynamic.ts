@@ -1,7 +1,8 @@
 import * as ko from "knockout";
 import { component } from "../../utils/decorators";
 import { Training } from "./component-how-to";
-import { Notifications } from "../../services/notification.service";
+//import { Notifications } from "../../services/notification.service";
+declare var NotificationsService : any;
 
 /// <reference path="knockout/knockout.d.ts" />
 
@@ -27,8 +28,11 @@ export function RegisterTrainingComponentsDyn(): void {
         length : any;
         index : any;
         images : Number[];
+        notifications : any;
         
         constructor() {
+            this.notifications = new NotificationsService();
+
             this.name = ko.observable('');
             this.trainings = ko.observableArray([
                 new Training("", "", "", null),
@@ -84,9 +88,6 @@ export function RegisterTrainingComponentsDyn(): void {
 
         loadDynamic(mytrainings : Training[]): void {
             if( mytrainings.length === 0) {
-                
-                //new Notifications();//.notify("", "");
-
                 return;
             }
             
@@ -100,6 +101,8 @@ export function RegisterTrainingComponentsDyn(): void {
                 }
                 else 
                     this.trainings.push(temp);    
+
+                this.notifications.notify(`La formation ${temp.name} est disponible`, temp.url);
 
                 this.loadDynamic(mytrainings);
             }, 200);

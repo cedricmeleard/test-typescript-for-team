@@ -1,6 +1,6 @@
-import NotificationsService from '../utils/notifications-service';
+import NotificationsService from "../utils/notifications-service";
 
-/// <reference path="../utils/notifications-service.d.ts"
+/// <reference path="../utils/notifications-service.d.ts" />
 export class Notifications {
     service : any;
 

@@ -1,4 +1,4 @@
-"use strict";
+//"use strict";
 class NotificationsService{
 
     constructor() {
@@ -27,4 +27,5 @@ class NotificationsService{
         }
     }
 }
-exports.default = NotificationsService;
+
+//exports.default = NotificationsService;
