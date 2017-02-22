@@ -1,54 +1,32 @@
-interface Criterias {
-}
+import { BaseService, QueryResult, QueryStatus } from "./base.service";
+import { randomImage} from "../utils/random-image-helper";
 
-class ServiceParam {
-    constructor( public query? : String, private params? : Criterias){
+export class Training {
+    name: string;
+    description: string;
+    url: string;
+    actions: [string];
+
+    constructor(name?: string, description?: string, url?: string, actions?: [string]) {
+        this.name = name;
+        this.description = description;
+        this.url = url;
+        this.actions = actions;
+    }
+
+    loading(): boolean {
+        return this.name === "" && this.description === "" && this.url === "" && this.actions === null;
     }
 }
 
-enum QueryStatus { Ok, Error, Pending }
-class QueryResult {
-    status : QueryStatus;
-    message: String;
-    //TODO peut-être a revoir
-    body : any;
-
-    constructor(){
-        this.status = QueryStatus.Pending;
-    }
-}
-
-interface IReadOnlyService {
-    url : String;
-
-    get(params? : ServiceParam) : QueryResult
-}
-
-interface IGenericService extends IReadOnlyService {
-    post(data : any, params? : ServiceParam) : void
-}
-
-class BaseService implements IGenericService {
-    url : String;
-
-    constructor() {
-    }
-
-    get() {
-        return new QueryResult();
-    }
-
-    post(data : any, params? : ServiceParam) {
-
-    }
-}
-
-
-class ServiceTest extends BaseService {
-    url : "/api/test/";
+export class TrainingService extends BaseService {
+    url : "/api/trainings/";
+    images : Number[];
 
     constructor() {
         super();
+
+        this.images = [];
     }
     
     get() {
@@ -56,6 +34,34 @@ class ServiceTest extends BaseService {
         result.status = QueryStatus.Ok;
         result.message = "Hell yeah";
 
+        result.body = [
+                    new Training("Knockout de A à Z", "From zero to hero, avec knockout",
+                        randomImage(this.images),
+                        ['subscribe']),
+                    new Training("Embarquez avec TypeScript", "Découvrez TypeScript, et comment il peut vous sauvez la vie",
+                        randomImage(this.images),
+                        ['subscribe']),
+                    new Training("Quel avenir pour Webforms ?", "Web quoi?",
+                        randomImage(this.images),
+                        ['launch', 'like']),
+                    new Training("Become progressive", "C'est la fin des haricots",
+                        randomImage(this.images),
+                        ['launch']),
+                    new Training("Vue Js", "Framework Js orienté composant",
+                        randomImage(this.images),
+                        ['launch']),
+                    new Training("Angular", "La réinvention de AngularJS",
+                        randomImage(this.images),
+                        ['launch']),
+                    new Training("ICallBackEventHandler", "Une fonctionalité de .net qui est de la m...",
+                        randomImage(this.images),
+                        ['launch']),
+                    new Training("Knockout i snot dead", "Knockout avec Aurelia",
+                        randomImage(this.images),
+                        ['launch'])
+                ];
+        
+        
         return result;
     }
 
@@ -63,20 +69,3 @@ class ServiceTest extends BaseService {
 
     }
 }
-
-class MyClass {
-    service : ServiceTest;
-
-    constructor(service? : ServiceTest ){
-        this.service = service ? service : new ServiceTest();
-    }
-
-    run() : void {
-        var temp = this.service.get();
-
-        console.log(temp.message);
-    }
-}
-
-const test = new MyClass(new ServiceTest());
-test.run();

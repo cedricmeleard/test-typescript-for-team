@@ -1,5 +1,7 @@
 import * as ko from "knockout";
 import { component } from "../../utils/decorators";
+import { QueryResult, QueryStatus } from "../../services/base.service";
+import { Training, TrainingService } from "../../services/training.service";
 import { declareTransclude } from "../../utils/declare-helper";
 import { randomImage } from "../../utils/random-image-helper";
 
@@ -55,38 +57,18 @@ export function RegisterTrainingTemplate(): void {
     })
     class TrainingHome {
         name: KnockoutObservable<string>;
-        trainings: KnockoutObservableArray<any>;
-        images: Number[]
+        trainings: KnockoutObservableArray<Training>;
+        service: TrainingService;
         
         constructor() {
             this.name = ko.observable('');
-            this.images = [];
-            this.trainings = ko.observableArray([
-                {
-                    name: 'Knockout de A à Z',
-                    description: "From zero to hero, avec knockout",
-                    url: `https://randomuser.me/api/portraits/women/${randomImage(this.images)}.jpg`, 
-                    actions : [ 'subscribe']
-                },
-                {
-                    name: 'Embarquez avec TypeScript',
-                    description: "Découvrez TypeScript, et comment il peut vous sauvez la vie",
-                    url: `https://randomuser.me/api/portraits/women/${randomImage(this.images)}.jpg`,
-                    actions : [ 'subscribe']
-                },
-                {
-                    name: 'Quel avenir pour Webforms ?',
-                    description: "Web quoi?",
-                    url: `https://randomuser.me/api/portraits/women/${randomImage(this.images)}.jpg`,
-                    actions : [ 'launch', 'like']
-                },
-                {
-                    name: 'Become progressive',
-                    description: "C'est la fin des haricots",
-                    url: `https://randomuser.me/api/portraits/women/${randomImage(this.images)}.jpg`,
-                    actions : [ 'launch']
-                }
-            ]);
+            this.trainings = ko.observableArray<Training>();
+            
+            this.service = new TrainingService();             
+            let result = this.service.get();
+            if (result.status === QueryStatus.Ok){
+                this.trainings(result.body);
+            }  
         }
 
         toString() : string {

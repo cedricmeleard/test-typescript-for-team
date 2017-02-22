@@ -1,4 +1,6 @@
 import * as ko from "knockout";
+import { QueryResult, QueryStatus } from "../../services/base.service";
+import { Training, TrainingService } from "../../services/training.service";
 import { component } from "../../utils/decorators";
 import { randomImage } from "../../utils/random-image-helper";
 
@@ -24,11 +26,11 @@ export function RegisterTrainingComponents(): void {
     class UserHome {
         name: KnockoutObservable<string>;
         trainings: KnockoutObservableArray<Training>;
-        images: Number[];
+        service: TrainingService;
 
         constructor() {
             this.name = ko.observable('');
-            this.images = [];
+            this.service = new TrainingService();
             this.trainings = ko.observableArray([
                 new Training("", "", "", null),
                 new Training("", "", "", null),
@@ -37,23 +39,10 @@ export function RegisterTrainingComponents(): void {
             ]);
 
             setTimeout(() => {
-                this.trainings([
-                    new Training("Knockout de A à Z", "From zero to hero, avec knockout",
-                        `https://randomuser.me/api/portraits/women/${randomImage(this.images)}.jpg`,
-                        ['subscribe']),
-                    new Training("Embarquez avec TypeScript", "Découvrez TypeScript, et comment il peut vous sauvez la vie",
-                        `https://randomuser.me/api/portraits/women/${randomImage(this.images)}.jpg`,
-                        ['subscribe']),
-                    new Training("Quel avenir pour Webforms ?", "Web quoi?",
-                        `https://randomuser.me/api/portraits/women/${randomImage(this.images)}.jpg`,
-                        ['launch', 'like']),
-                    new Training("Become progressive", "C'est la fin des haricots",
-                        `https://randomuser.me/api/portraits/women/${randomImage(this.images)}.jpg`,
-                        ['launch']),
-                    new Training("Vue Js", "Framework Js orienté composant",
-                        `https://randomuser.me/api/portraits/women/${randomImage(this.images)}.jpg`,
-                        ['launch'])
-                ]);
+                let result = this.service.get();
+                if (result.status === QueryStatus.Ok){
+                    this.trainings(result.body);
+                }  
             }, 1500);
         }
 
@@ -101,24 +90,5 @@ export function RegisterTrainingComponents(): void {
                 return params.loading() ? 'loading' : '';
             });
         }
-    }
-}
-
-
-export class Training {
-    name: string;
-    description: string;
-    url: string;
-    actions: [string];
-
-    constructor(name: string, description: string, url: string, actions: [string]) {
-        this.name = name;
-        this.description = description;
-        this.url = url;
-        this.actions = actions;
-    }
-
-    loading(): boolean {
-        return this.name === "" && this.description === "" && this.url === "" && this.actions === null;
     }
 }
