@@ -1,5 +1,6 @@
 import { BaseService, QueryResult, QueryStatus } from "./base.service";
-import { randomImage} from "../utils/random-image-helper";
+import { randomImage } from "../utils/random-image-helper";
+import * as $ from "jquery";
 
 export class Training {
     name: string;
@@ -58,10 +59,10 @@ export class TrainingService extends BaseService {
                         ['launch'])
                 ]
 
-
-        const promise = new Promise<QueryResult>((resolve, reject) => {
-            //delay 1sec before resolve
-            setTimeout(() => {
+       
+        const promise = $.Deferred<QueryResult>();
+        
+         setTimeout(() => {
                 //result
                 const result = new QueryResult();
                 result.status = QueryStatus.Ok;
@@ -69,13 +70,33 @@ export class TrainingService extends BaseService {
                 //ws datas
                 result.body = mytrainings;
                 if (result.status === QueryStatus.Ok) {
-                    resolve(result);
+                    promise.resolve(result);
                 }
                 else {
-                    reject();
+                    promise.reject();
                 }
             }, 2000 );
-        });
+        
+        // //use javascript API       
+        // const promise = new Promise<QueryResult>((resolve, reject) => {
+
+        //     //return fetch(url);
+        //     //delay 1sec before resolve
+        //     setTimeout(() => {
+        //         //result
+        //         const result = new QueryResult();
+        //         result.status = QueryStatus.Ok;
+        //         result.message = "Hell yeah";
+        //         //ws datas
+        //         result.body = mytrainings;
+        //         if (result.status === QueryStatus.Ok) {
+        //             resolve(result);
+        //         }
+        //         else {
+        //             reject();
+        //         }
+        //     }, 2000 );
+        // });
 
         return promise;
     }

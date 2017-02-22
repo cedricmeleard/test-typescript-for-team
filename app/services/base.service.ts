@@ -1,3 +1,5 @@
+import * as $ from "jquery";
+
 export enum QueryStatus { Ok, Error, Pending }
 export class QueryResult {
     status : QueryStatus;
@@ -21,7 +23,7 @@ class ServiceParam {
 interface IReadOnlyService {
     url : String;
 
-    get(params? : ServiceParam) : Promise<QueryResult>
+    get(params? : ServiceParam) : JQueryPromise<QueryResult> //Promise<QueryResult>
 }
 
 interface IGenericService extends IReadOnlyService {
@@ -35,10 +37,14 @@ export class BaseService implements IGenericService {
     }
 
     get(params? : ServiceParam )  {
-        const promise = new Promise((resolve, reject) => {
-            //call fetch then resolve
-            resolve( null );
-        });
+        //using jquery
+        const promise = $.Deferred();
+        promise.resolve(null);
+        // //use javascript Promise API
+        // const promise = new Promise((resolve, reject) => {
+        //     //call fetch then resolve
+        //     resolve( null );
+        // });
         return promise;
     }
 
