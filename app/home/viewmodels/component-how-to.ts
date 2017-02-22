@@ -38,12 +38,11 @@ export function RegisterTrainingComponents(): void {
                 new Training("", "", "", null)
             ]);
 
-            setTimeout(() => {
-                let result = this.service.get();
+            this.service.get().then( result => {
                 if (result.status === QueryStatus.Ok){
                     this.trainings(result.body);
-                }  
-            }, 1500);
+                }   
+            });
         }
 
     }

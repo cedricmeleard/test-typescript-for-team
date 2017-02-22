@@ -21,20 +21,17 @@ export class Training {
 
 export class TrainingService extends BaseService {
     url : "/api/trainings/";
+    //image deja utilisées
     images : Number[];
 
     constructor() {
         super();
-
         this.images = [];
     }
     
     get() {
-        var result = new QueryResult();
-        result.status = QueryStatus.Ok;
-        result.message = "Hell yeah";
-
-        result.body = [
+        //datas
+        const mytrainings =  [
                     new Training("Knockout de A à Z", "From zero to hero, avec knockout",
                         randomImage(this.images),
                         ['subscribe']),
@@ -59,10 +56,28 @@ export class TrainingService extends BaseService {
                     new Training("Knockout i snot dead", "Knockout avec Aurelia",
                         randomImage(this.images),
                         ['launch'])
-                ];
-        
-        
-        return result;
+                ]
+
+
+        const promise = new Promise<QueryResult>((resolve, reject) => {
+            //delay 1sec before resolve
+            setTimeout(() => {
+                //result
+                const result = new QueryResult();
+                result.status = QueryStatus.Ok;
+                result.message = "Hell yeah";
+                //ws datas
+                result.body = mytrainings;
+                if (result.status === QueryStatus.Ok) {
+                    resolve(result);
+                }
+                else {
+                    reject();
+                }
+            }, 2000 );
+        });
+
+        return promise;
     }
 
     post(){

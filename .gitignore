@@ -4,3 +4,5 @@
 node_modules/
 built/
 styles/**/*.css
+
+debug.log

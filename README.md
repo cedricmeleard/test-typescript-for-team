@@ -21,6 +21,9 @@ and
 > `gulp` to compile typescript and scss files 
 > you can use `gulp :watch` for changing things and live recompiling 
 
+if you got error with promise you can try
+> `typings install --global dt~es6-shim`
+
 There is no launcher, therefore you must setup your own webserver environnement.
 to go fast you can use chromeserver extension
 

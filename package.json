@@ -7,7 +7,7 @@
   "author": "Cédric Méléard <cedric.meleard@futurskill.fr>",
   "license": "ISC",
   "dependencies": {
-    "@types/es6-promise": "0.0.32",
+    "es6-promise": "^4.0.5",
     "jquery": "^1.12.4",
     "knockout": "^3.4.1",
     "requirejs": "^2.3.2",
@@ -15,6 +15,7 @@
     "text": "github:requirejs/text"
   },
   "devDependencies": {
+    "@types/es6-promise": "0.0.32",
     "@types/jquery": "^2.0.40",
     "@types/knockout": "^3.4.39",
     "gulp": "^3.9.1",

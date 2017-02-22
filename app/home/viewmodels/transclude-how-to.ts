@@ -62,13 +62,19 @@ export function RegisterTrainingTemplate(): void {
         
         constructor() {
             this.name = ko.observable('');
-            this.trainings = ko.observableArray<Training>();
-            
+            this.trainings = ko.observableArray([
+                new Training("", "", "", null),
+                new Training("", "", "", null),
+                new Training("", "", "", null),
+                new Training("", "", "", null)
+            ]);
+
             this.service = new TrainingService();             
-            let result = this.service.get();
-            if (result.status === QueryStatus.Ok){
-                this.trainings(result.body);
-            }  
+            this.service.get().then( result => {
+                if (result.status === QueryStatus.Ok){
+                    this.trainings(result.body);
+                }   
+            });
         }
 
         toString() : string {

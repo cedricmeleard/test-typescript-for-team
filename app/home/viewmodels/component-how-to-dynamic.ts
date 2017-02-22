@@ -2,10 +2,9 @@ import * as ko from "knockout";
 import { component } from "../../utils/decorators";
 import { QueryResult, QueryStatus } from "../../services/base.service";
 import { Training, TrainingService } from "../../services/training.service";
-
 import { randomImage } from "../../utils/random-image-helper";
 //import { Notifications } from "../../services/notification.service";
-declare var NotificationsService : any;
+//declare var NotificationsService : any;
 
 /// <reference path="knockout/knockout.d.ts" />
 
@@ -34,7 +33,7 @@ export function RegisterTrainingComponentsDyn(): void {
         service : TrainingService;
         
         constructor() {
-            this.notifications = new NotificationsService();
+            //this.notifications = new NotificationsService();
             this.service = new TrainingService();
 
             this.name = ko.observable('');
@@ -48,15 +47,17 @@ export function RegisterTrainingComponentsDyn(): void {
             this.length = this.trainings().length;
             this.index = 0;
 
-            let result = this.service.get();
-            if (result.status === QueryStatus.Ok){
-                this.loadDynamic(result.body);
-            }                
+            let result = this.service.get().then( result => {
+                if (result.status === QueryStatus.Ok){
+                    this.loadDynamic(result.body);
+                }   
+            });
+                         
         }
 
         loadDynamic(mytrainings : Training[]): void {
             if( mytrainings.length === 0) {
-                this.notifications.notify('Hello, vos formations sont disponibles ;)', randomImage());
+                //this.notifications.notify('Hello, vos formations sont disponibles ;)', randomImage());
                 return;
             }
             

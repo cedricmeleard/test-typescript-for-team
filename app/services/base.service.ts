@@ -21,7 +21,7 @@ class ServiceParam {
 interface IReadOnlyService {
     url : String;
 
-    get(params? : ServiceParam) : QueryResult
+    get(params? : ServiceParam) : Promise<QueryResult>
 }
 
 interface IGenericService extends IReadOnlyService {
@@ -34,11 +34,15 @@ export class BaseService implements IGenericService {
     constructor() {
     }
 
-    get() {
-        return new QueryResult();
+    get(params? : ServiceParam )  {
+        const promise = new Promise((resolve, reject) => {
+            //call fetch then resolve
+            resolve( null );
+        });
+        return promise;
     }
 
     post(data : any, params? : ServiceParam) {
-
+     
     }
 }
