@@ -26,7 +26,8 @@
     height: 100vh;
     transform: translateX(-100%);
     background-color: $primary-color;
-  color: $on-primary-color;
+    color: $on-primary-color;
+    z-index: 9;
 
   ul, li {
     list-style: none;

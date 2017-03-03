@@ -6,7 +6,10 @@
     "module": "amd",
     "target": "es3",
     "experimentalDecorators": true,
-    "removeComments": true
+    "removeComments": true,
+     "types" : [
+            "jasmine"
+        ]
   },
   "files": [
     "./app/require-config.ts",
@@ -21,6 +24,7 @@
     "./app/home/viewmodels/component-how-to.ts",
     "./app/home/viewmodels/component-how-to-dynamic.ts",
     "./app/home/viewmodels/transclude-how-to.ts",
+    "./app/home/viewmodels/animation-field-test.ts",
     "./app/home/viewmodels/templates/modal-component.ts",
     "./app/home/home.ts",
     "./app/index.ts"
