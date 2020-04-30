@@ -8,7 +8,7 @@
   "license": "ISC",
   "dependencies": {
     "es6-promise": "^4.0.5",
-    "jquery": "^1.12.4",
+    "jquery": "^3.5.0",
     "knockout": "^3.4.1",
     "requirejs": "^2.3.2",
     "requirejs-text": "^2.0.15",
